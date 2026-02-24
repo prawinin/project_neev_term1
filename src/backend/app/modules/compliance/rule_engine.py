@@ -23,12 +23,12 @@ class RuleEngine:
 
         breakdown = []
         if is_legal:
-            breakdown.append(f"✅ Plot Area ({area_sqft} sq.ft) > Min Requirement ({min_sqft} sq.ft)")
+            breakdown.append(f"Plot area ({area_sqft} sq.ft) is above minimum requirement ({min_sqft} sq.ft).")
         else:
-            breakdown.append(f"❌ Plot Area ({area_sqft} sq.ft) < Min Requirement ({min_sqft} sq.ft)")
+            breakdown.append(f"Plot area ({area_sqft} sq.ft) is below minimum requirement ({min_sqft} sq.ft).")
 
-        breakdown.append(f"ℹ️ FSI Applied: {round(fsi, 2)}x ({fsi_source})")
-        breakdown.append(f"➡️ Max Buildable Area: {round(max_buildable, 2)} sq.ft")
+        breakdown.append(f"FSI applied: {round(fsi, 2)}x ({fsi_source}).")
+        breakdown.append(f"Maximum buildable area: {round(max_buildable, 2)} sq.ft.")
 
         return {
             "city": city,

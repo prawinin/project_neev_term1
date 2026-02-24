@@ -10,7 +10,7 @@ def main():
     st.set_page_config(page_title="Project Neev - Term 1", page_icon="🏗️", layout="wide")
 
     st.title("🏗️ Project Neev - Term 1")
-    st.caption("Public build: Scan + Compliance + Cost Estimation")
+    st.caption("Scan, compliance check, and baseline cost estimation")
 
     col1, col2 = st.columns([2, 1])
 

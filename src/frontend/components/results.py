@@ -10,7 +10,7 @@ def render_results(data):
     legal = data["legal"]
     finance = data["finance"]
 
-    with st.expander("👁️ Developer Mode: Computer Vision Internals"):
+    with st.expander("Computer Vision Details"):
         col_d1, col_d2 = st.columns(2)
         with col_d1:
             st.info("Detection Metrics")
@@ -25,7 +25,7 @@ def render_results(data):
                 except Exception:
                     st.warning("Could not decode debug image.")
 
-    st.subheader("📐 Site Analysis")
+    st.subheader("Site Analysis")
     c1, c2, c3, c4 = st.columns(4)
     c1.metric("Plot Area", f"{vision['area_sqft']} sq.ft")
     c2.metric("Dimensions", f"{vision['width_ft']} x {vision['length_ft']} ft")
@@ -39,12 +39,12 @@ def render_results(data):
     )
 
     if "compliance_breakdown" in legal:
-        st.caption("📝 Compliance Logic:")
+        st.caption("Compliance breakdown")
         for rule in legal["compliance_breakdown"]:
             st.markdown(f"- {rule}")
 
     st.divider()
-    st.subheader("💰 Financial Estimation")
+    st.subheader("Financial Estimation")
     col_left, col_right = st.columns([1, 2])
 
     with col_left:
@@ -66,7 +66,7 @@ def render_results(data):
         st.plotly_chart(fig, use_container_width=True)
 
     st.divider()
-    st.subheader("🏗️ Bill of Materials (BOM)")
+    st.subheader("Bill of Materials (BOM)")
     bom_data = finance["bill_of_materials"]
     df = pd.DataFrame(list(bom_data.items()), columns=["Material", "Estimated Quantity"])
     st.dataframe(df, use_container_width=True, hide_index=True)
@@ -91,7 +91,7 @@ MATERIAL BREAKDOWN:
         report_content += f"- {item}: {qty}\n"
 
     st.download_button(
-        label="📄 Download Term 1 Report",
+        label="Download Term 1 Report",
         data=report_content,
         file_name="neev_term1_report.txt",
         mime="text/plain",

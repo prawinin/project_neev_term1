@@ -13,11 +13,9 @@ PYTHON_EXEC = str(VENV_PYTHON) if VENV_PYTHON.exists() else sys.executable
 
 
 def main():
-    print("=" * 60)
-    print("🚀 LAUNCHING PROJECT NEEV - TERM 1")
-    print(f"📂 Root: {ROOT_DIR}")
-    print(f"🐍 Python: {PYTHON_EXEC}")
-    print("=" * 60)
+    print("Starting Project Neev Term 1")
+    print(f"Root: {ROOT_DIR}")
+    print(f"Python: {PYTHON_EXEC}")
 
     env = os.environ.copy()
     current_pythonpath = env.get("PYTHONPATH", "")
@@ -30,7 +28,7 @@ def main():
     processes = []
 
     try:
-        print("\n[1/2] 🔌 Starting Backend (Uvicorn)...")
+        print("\n[1/2] Starting backend (Uvicorn)...")
         backend_cmd = [
             PYTHON_EXEC,
             "-m",
@@ -46,7 +44,7 @@ def main():
 
         time.sleep(3)
 
-        print("[2/2] 🖥️  Starting Frontend (Streamlit)...")
+        print("[2/2] Starting frontend (Streamlit)...")
         frontend_cmd = [
             PYTHON_EXEC,
             "-m",
@@ -61,12 +59,12 @@ def main():
         frontend_process = subprocess.Popen(frontend_cmd, cwd=str(ROOT_DIR), env=env)
         processes.append(frontend_process)
 
-        print("\n✅ TERM 1 LIVE! Press Ctrl+C to stop.")
+        print("\nServices are running. Press Ctrl+C to stop.")
         while True:
             time.sleep(1)
 
     except KeyboardInterrupt:
-        print("\n🛑 Shutting down...")
+        print("\nShutting down...")
         for process in processes:
             process.terminate()
             try:
